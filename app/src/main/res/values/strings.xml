@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PackageDeliveryCompany</string>
+    <string name="loginButton">Log in</string>
+    <string name="isManager">Are You Manager?</string>
+    <string name="usernameLabel">Username:</string>
+    <string name="passwordLabel">Password:</string>
+    <string name="trucksLabel">Trucks</string>
+    <string name="cargosLabel">Cargos</string>
+    <string name="ordersLabel">Orders</string>
+    <string name="addUserLabel">Managers</string>
+    <string name="mainPage">To Main Page</string>
+</resources>

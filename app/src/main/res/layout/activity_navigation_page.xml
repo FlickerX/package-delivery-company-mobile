@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".navigation_page"
+    android:layout_marginStart="10sp"
+    android:layout_marginEnd="10sp"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:drawableLeft="@drawable/ic_truck"
+        android:text="@string/trucksLabel"
+        android:onClick="openTruckList"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:drawableLeft="@drawable/ic_cargo"
+        android:text="@string/cargosLabel"
+        android:onClick="navigateToCargoList"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:drawableLeft="@drawable/ic_add_user"
+        android:text="@string/addUserLabel"
+        android:onClick="navigateToManagersPage"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:drawableLeft="@drawable/ic_orders"
+        android:text="@string/ordersLabel"
+        android:onClick="navigateToOrdersPage"/>
+</LinearLayout>
