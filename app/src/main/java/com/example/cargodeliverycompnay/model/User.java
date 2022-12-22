@@ -35,4 +35,9 @@ public abstract class User implements Serializable {
         this.salary = salary;
     }
 
+    @Override
+    public String
+    toString() {
+        return name + " " + surname + ", Birthday = " + birthday + ", Salary = " + salary;
+    }
 }

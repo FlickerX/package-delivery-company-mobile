@@ -21,7 +21,6 @@ public class Rest {
         httpURLConnection.setRequestProperty("Content-type", "application/json; charset = UTF-8");
         int code = httpURLConnection.getResponseCode();
 
-        System.out.println("Get code received: " + code);
         if (code == HttpURLConnection.HTTP_OK) {
             BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
             String line;
@@ -35,7 +34,8 @@ public class Rest {
             return "Error on get";
         }
     }
-    public static String sendPost(String urlPost, String postDataParams) throws IOException{ //Optimaze to other method
+
+    public static String sendPost(String urlPost, String postDataParams) throws IOException{
         URL url = new URL(urlPost);
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
         setConnectionParameters(httpURLConnection, "POST");
@@ -52,14 +52,58 @@ public class Rest {
             String line;
             StringBuffer response = new StringBuffer();
             if ((line = in.readLine()) != null) {
-//                Log.d("nikita", line);
                 response.append(line);
             }
             in.close();
-//            Log.d("nikita", response.toString());
             return response.toString();
         } else {
             return "Error on post";
+        }
+    }
+    public static String sendPut(String urlPost, String postDataParams) throws IOException{
+        URL url = new URL(urlPost);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+        setConnectionParameters(httpURLConnection, "PUT");
+
+        outputStream = httpURLConnection.getOutputStream();
+        bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+        bufferedWriter.write(postDataParams);
+        bufferedWriter.close();
+        outputStream.close();
+
+        int code = httpURLConnection.getResponseCode();
+        if (code == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+            String line;
+            StringBuffer response = new StringBuffer();
+            if ((line = in.readLine()) != null) {
+                response.append(line);
+            }
+            in.close();
+            return response.toString();
+        } else {
+            return "Error on post";
+        }
+    }
+
+    public static String sendDelete(String urlDelete) throws IOException {
+        URL url = new URL(urlDelete);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+        httpURLConnection.setRequestMethod("DELETE");
+        httpURLConnection.setRequestProperty("Content-type", "application/json; charset = UTF-8");
+        int code = httpURLConnection.getResponseCode();
+
+        if (code == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+            String line;
+            StringBuffer response = new StringBuffer();
+            if ((line = in.readLine()) != null) {
+                response.append(line);
+            }
+            in.close();
+            return response.toString();
+        } else {
+            return "Error on get";
         }
     }
 

@@ -21,11 +21,4 @@ public class Courier extends User{
         this.driverLicense = driverLicense;
         this.healthCertificate = healthCertificate;
     }
-
-//    @Override
-//    public String toString() {
-//        return getName() +
-//                " " + getSurname() +
-//                ", Username = " + getLogin();
-//    }
 }

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -32,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         EditText password = findViewById(R.id.passwordField);
         CheckBox isManager = findViewById(R.id.isManagerCheckbox);
 
-//        String data = "{\"login\":\"" + username.getText().toString() + "\", \"psw\": \"" + password.getText().toString() + "\", \"type\":\"" + isManager.isChecked() + "\"}";
-
         String data = "{\"login\":\"" + username.getText().toString() + "\", \"password\": \"" + password.getText().toString() + "\"}";
         Executor executor = Executors.newSingleThreadExecutor(); // Gijos
         Handler handler = new Handler(Looper.getMainLooper());
@@ -49,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 String finalResponse = response;
                 handler.post(()->{
                     if (!finalResponse.equals("")){
-                        Intent intent = new Intent(MainActivity.this, navigation_page.class);
+                        Intent intent = new Intent(MainActivity.this, NavigationPage.class);
                         intent.putExtra("User", finalResponse);
                         startActivity(intent);
                     }

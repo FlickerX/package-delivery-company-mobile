@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PackageDeliveryCompany</string>
+    <string name="app_name">Package Delivery Company</string>
     <string name="loginButton">Log in</string>
     <string name="isManager">Are You Manager?</string>
     <string name="usernameLabel">Username:</string>
@@ -9,4 +9,23 @@
     <string name="ordersLabel">Orders</string>
     <string name="addUserLabel">Managers</string>
     <string name="mainPage">To Main Page</string>
+    <string name="create">Add</string>
+    <string name="address">Address</string>
+    <string name="requestedDeliveryDate">Requested Delivery Date</string>
+    <string name="deliveryStartDate">Delivery Start Date</string>
+    <string name="deliveryEndDate">Delivery End Date</string>
+    <string name="orderStatus">Status</string>
+    <string name="truck">Truck</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="requestedOrder">Requested Order</string>
+    <string name="startOrder">Start Order</string>
+    <string name="endOrder">End Order</string>
+    <string name="toOrders">Orders</string>
+    <string name="mark">Mark:</string>
+    <string name="model">Model:</string>
+    <string name="engineLiters">Engine Liters:</string>
+    <string name="horsePower">Horse Power:</string>
+    <string name="color">Color:</string>
+    <string name="trucks">Trucks</string>
 </resources>

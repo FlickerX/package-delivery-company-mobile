@@ -1,12 +1,11 @@
 package com.example.cargodeliverycompnay;
 
-import static com.example.cargodeliverycompnay.Constants.ALL_CARGOS_URL;
-import static com.example.cargodeliverycompnay.Constants.ALL_COURIERS_URL;
 import static com.example.cargodeliverycompnay.Constants.ALL_MANGERS_URL;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,8 +14,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.cargodeliverycompnay.model.Cargo;
-import com.example.cargodeliverycompnay.model.Courier;
 import com.example.cargodeliverycompnay.model.Manager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,11 +21,12 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class manager_list extends AppCompatActivity {
+public class ManagerList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +38,21 @@ public class manager_list extends AppCompatActivity {
 
         executor.execute(()->{
             try{
-//                String response = Rest.sendGet(ALL_MANGERS_URL);
                 String response = Rest.sendGet(ALL_MANGERS_URL);
                 handler.post(()->{
                     if (!response.equals("")){
-                        Gson builder = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
-                                .create();
+
+                        GsonBuilder gsonBuilder = new GsonBuilder();
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+                        }
+                        Gson gson = gsonBuilder.setPrettyPrinting().create();
 
                         Type managerType = new TypeToken<List<Manager>>(){}.getType();
-                        Log.d("nikita", response);
-                        final List<Manager> managerListFromJson = builder.fromJson(response, managerType);
+
+                        final List<Manager> managerListFromJson = gson.fromJson(response, managerType);
                         ListView managerListView = findViewById(R.id.managerList);
-                        ArrayAdapter<Manager> arrayAdapter = new ArrayAdapter<>(manager_list.this, android.R.layout.simple_list_item_1, managerListFromJson);
+                        ArrayAdapter<Manager> arrayAdapter = new ArrayAdapter<>(ManagerList.this, android.R.layout.simple_list_item_1, managerListFromJson);
                         managerListView.setAdapter(arrayAdapter);
                     }
                 });
@@ -62,7 +63,7 @@ public class manager_list extends AppCompatActivity {
     }
 
     public void navigateToMainPage(View view) {
-        Intent intent = new Intent(manager_list.this, navigation_page.class);
+        Intent intent = new Intent(ManagerList.this, NavigationPage.class);
         startActivity(intent);
     }
 }

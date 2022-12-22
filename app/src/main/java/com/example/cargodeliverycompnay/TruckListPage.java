@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,10 +40,6 @@ public class TruckListPage extends AppCompatActivity {
                 String response = Rest.sendGet(ALL_TRUCKS_URL);
                 handler.post(()->{
                     if (!response.equals("")){
-                        // Jei yra data, data reikia serializuotuti
-
-                        // Dar reikalingas json builder
-                        // Jei yra deserializatoriai, reikia registuruoti, GsonBuilder().
                         Gson builder = new GsonBuilder().create();
 
                         Type truckType = new TypeToken<List<Truck>>(){}.getType();
@@ -54,15 +49,15 @@ public class TruckListPage extends AppCompatActivity {
                         ListView truckListView = findViewById(R.id.truckList);
 
                         ArrayAdapter<Truck> arrayAdapter = new ArrayAdapter<>(TruckListPage.this, android.R.layout.simple_list_item_1, truckListFromJson);
-                        Log.d("nikita", String.valueOf(arrayAdapter));
                         truckListView.setAdapter(arrayAdapter);
 
                         truckListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                Toast.makeText(TruckListPage.this, "Selected Truck: " + truckListFromJson.get(i).getId(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(TruckListPage.this, "Selected Truck: " + truckListFromJson.get(i).getId(), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(TruckListPage.this, DetailedTruck.class);
-                                intent.putExtra("Selected Truck", truckListFromJson.get(i).getId());
+                                String truckId = String.valueOf(truckListFromJson.get(i).getId());
+                                intent.putExtra("SELECTED_TRUCK_ID", truckId);
                                 startActivity(intent);
                             }
                         });
@@ -75,8 +70,7 @@ public class TruckListPage extends AppCompatActivity {
     }
 
     public void navigateToMainPage(View view) {
-        Intent intent = new Intent(TruckListPage.this, navigation_page.class);
-//        intent.putExtra("User", finalResponse);
+        Intent intent = new Intent(TruckListPage.this, NavigationPage.class);
         startActivity(intent);
     }
 }

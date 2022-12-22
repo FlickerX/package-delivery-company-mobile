@@ -51,4 +51,24 @@ public class Truck {
     public Integer getId() {
         return this.id;
     }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public Double getEngineLiters() {
+        return engineLiters;
+    }
+
+    public Integer getHorsePower() {
+        return horsePower;
+    }
+
+    public String getColor() {
+        return color;
+    }
 }

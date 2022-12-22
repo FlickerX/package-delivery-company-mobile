@@ -7,8 +7,8 @@
 
     <ListView
         android:id="@+id/truckList"
-        android:layout_width="390dp"
-        android:layout_height="590dp"
+        android:layout_width="387dp"
+        android:layout_height="646dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
@@ -17,17 +17,20 @@
         app:layout_constraintVertical_bias="0.114" />
 
     <Button
+        android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
         android:drawableLeft="@drawable/ic_main_page"
         android:onClick="navigateToMainPage"
         android:text="@string/mainPage"
-        android:layout_marginStart="10sp"
-        android:layout_marginEnd="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/truckList"
+        app:layout_constraintVertical_bias="0.407"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

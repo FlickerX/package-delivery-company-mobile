@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-public class navigation_page extends AppCompatActivity {
+public class NavigationPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,22 +15,22 @@ public class navigation_page extends AppCompatActivity {
     }
 
     public void openTruckList(View view) {
-        Intent intent = new Intent(navigation_page.this, TruckListPage.class);
+        Intent intent = new Intent(NavigationPage.this, TruckListPage.class);
         startActivity(intent);
     }
 
     public void navigateToCargoList(View view) {
-        Intent intent = new Intent(navigation_page.this, cargo_list.class);
+        Intent intent = new Intent(NavigationPage.this, CargoList.class);
         startActivity(intent);
     }
 
     public void navigateToManagersPage(View view) {
-        Intent intent = new Intent(navigation_page.this, manager_list.class);
+        Intent intent = new Intent(NavigationPage.this, ManagerList.class);
         startActivity(intent);
     }
 
     public void navigateToOrdersPage(View view) {
-        Intent intent = new Intent(navigation_page.this, orders.class);
+        Intent intent = new Intent(NavigationPage.this, Orders.class);
         startActivity(intent);
     }
 }

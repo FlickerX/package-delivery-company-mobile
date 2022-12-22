@@ -19,48 +19,49 @@ public class Destination {
     private String address;
     private LocalDate requestedDeliveryDate;
     private LocalDate deliveryStartDate;
-
     private LocalDate deliveryEndDate;
     private OrderStatus status;
-
-    private List<Manager> managers;
-
-    private List<Cargo> cargos;
-
-    private List<Checkpoint> checkpoints;
-
-    private Courier courier;
-
     private Truck truck;
 
-    private List<Forum> forums;
-    public Destination(String address, LocalDate requestedDeliveryDate, LocalDate deliveryStartDate, OrderStatus status, List<Manager> managers, List<Cargo> cargos, Courier courier, Truck truck) {
+    public Destination(String address, LocalDate requestedDeliveryDate, LocalDate deliveryStartDate, OrderStatus status) {
         this.address = address;
         this.requestedDeliveryDate = requestedDeliveryDate;
         this.deliveryStartDate = deliveryStartDate;
         this.status = status;
-        this.managers = managers;
-        this.cargos = cargos;
-        this.courier = courier;
-        this.truck = truck;
-    }
-
-    public Destination(String address, LocalDate requestedDeliveryDate, LocalDate deliveryStartDate, OrderStatus status, List<Manager> managers, List<Cargo> cargos, Truck truck) {
-        this.address = address;
-        this.requestedDeliveryDate = requestedDeliveryDate;
-        this.deliveryStartDate = deliveryStartDate;
-        this.status = status;
-        this.managers = managers;
-        this.cargos = cargos;
-        this.truck = truck;
     }
 
     @Override
     public String toString() {
         return "Address = " + address +
-                ", requestedDeliveryDate=" + requestedDeliveryDate +
-                " " + status +
-                ", courier=" + courier +
-                ", truck=" + truck;
+                ", Requested delivery date= " + requestedDeliveryDate +
+                ", " + status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public LocalDate getRequestedDeliveryDate() {
+        return requestedDeliveryDate;
+    }
+
+    public LocalDate getDeliveryStartDate() {
+        return deliveryStartDate;
+    }
+
+    public LocalDate getDeliveryEndDate() {
+        return deliveryEndDate;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public Truck getTruck() {
+        return truck;
     }
 }

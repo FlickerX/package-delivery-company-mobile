@@ -11,22 +11,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-//@AllArgsConstructor
 
 public class Manager extends User{
     private boolean isAdmin;
 
-    private List<Destination> destinations;
 
     public Manager(String login, String password, String name, String surname, LocalDate birthday, String phoneNo, Double salary, boolean isAdmin) {
         super(login, password, name, surname, birthday, phoneNo, salary);
         this.isAdmin = isAdmin;
     }
-//    @Override
-//    public String toString() {
-//        return  getName() + " " +
-//                getSurname() +
-//                ", Username = " + getLogin() +
-//                ", Admin = " + isAdmin;
-//    }
 }
