@@ -1,4 +1,4 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.deserializers;
 
 import android.os.Build;
 

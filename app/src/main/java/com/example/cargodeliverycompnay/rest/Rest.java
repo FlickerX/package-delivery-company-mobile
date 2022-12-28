@@ -1,4 +1,4 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.rest;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,6 +1,6 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.conrollers;
 
-import static com.example.cargodeliverycompnay.Constants.ALL_CARGOS_URL;
+import static com.example.cargodeliverycompnay.api.Constants.ALL_CARGOS_URL;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.cargodeliverycompnay.R;
+import com.example.cargodeliverycompnay.rest.Rest;
 import com.example.cargodeliverycompnay.model.Cargo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,7 +25,7 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class CargoList extends AppCompatActivity {
+public class CargoListController extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class CargoList extends AppCompatActivity {
 
                         ListView cargoListView = findViewById(R.id.cargoList);
 
-                        ArrayAdapter<Cargo> arrayAdapter = new ArrayAdapter<>(CargoList.this, android.R.layout.simple_list_item_1, cargoListFromJson);
+                        ArrayAdapter<Cargo> arrayAdapter = new ArrayAdapter<>(CargoListController.this, android.R.layout.simple_list_item_1, cargoListFromJson);
                         cargoListView.setAdapter(arrayAdapter);
                     }
                 });
@@ -57,7 +59,7 @@ public class CargoList extends AppCompatActivity {
     }
 
     public void navigateToMainPage(View view) {
-        Intent intent = new Intent(CargoList.this, NavigationPage.class);
+        Intent intent = new Intent(CargoListController.this, NavigationPageController.class);
         startActivity(intent);
     }
 }

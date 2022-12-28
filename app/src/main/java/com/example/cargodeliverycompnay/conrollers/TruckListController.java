@@ -1,6 +1,6 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.conrollers;
 
-import static com.example.cargodeliverycompnay.Constants.ALL_TRUCKS_URL;
+import static com.example.cargodeliverycompnay.api.Constants.ALL_TRUCKS_URL;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cargodeliverycompnay.R;
+import com.example.cargodeliverycompnay.rest.Rest;
 import com.example.cargodeliverycompnay.model.Truck;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,7 +27,7 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class TruckListPage extends AppCompatActivity {
+public class TruckListController extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +50,14 @@ public class TruckListPage extends AppCompatActivity {
 
                         ListView truckListView = findViewById(R.id.truckList);
 
-                        ArrayAdapter<Truck> arrayAdapter = new ArrayAdapter<>(TruckListPage.this, android.R.layout.simple_list_item_1, truckListFromJson);
+                        ArrayAdapter<Truck> arrayAdapter = new ArrayAdapter<>(TruckListController.this, android.R.layout.simple_list_item_1, truckListFromJson);
                         truckListView.setAdapter(arrayAdapter);
 
                         truckListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                Toast.makeText(TruckListPage.this, "Selected Truck: " + truckListFromJson.get(i).getId(), Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(TruckListPage.this, DetailedTruck.class);
+                                Toast.makeText(TruckListController.this, "Selected Truck: " + truckListFromJson.get(i).getId(), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(TruckListController.this, DetailedTruckController.class);
                                 String truckId = String.valueOf(truckListFromJson.get(i).getId());
                                 intent.putExtra("SELECTED_TRUCK_ID", truckId);
                                 startActivity(intent);
@@ -70,7 +72,7 @@ public class TruckListPage extends AppCompatActivity {
     }
 
     public void navigateToMainPage(View view) {
-        Intent intent = new Intent(TruckListPage.this, NavigationPage.class);
+        Intent intent = new Intent(TruckListController.this, NavigationPageController.class);
         startActivity(intent);
     }
 }

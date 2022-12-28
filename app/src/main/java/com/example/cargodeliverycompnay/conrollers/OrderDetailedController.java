@@ -1,7 +1,7 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.conrollers;
 
-import static com.example.cargodeliverycompnay.Constants.DESTINATION_BY_ID;
-import static com.example.cargodeliverycompnay.Constants.UPDATE_DESTINATION;
+import static com.example.cargodeliverycompnay.api.Constants.DESTINATION_BY_ID;
+import static com.example.cargodeliverycompnay.api.Constants.UPDATE_DESTINATION;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,11 +10,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cargodeliverycompnay.deserializers.LocalDateDeserializer;
+import com.example.cargodeliverycompnay.R;
+import com.example.cargodeliverycompnay.rest.Rest;
 import com.example.cargodeliverycompnay.model.Destination;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,7 +26,7 @@ import java.time.LocalDate;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class OrderDetailed extends AppCompatActivity {
+public class OrderDetailedController extends AppCompatActivity {
     Executor executor = Executors.newSingleThreadExecutor();
     Handler handler = new Handler(Looper.getMainLooper());
 
@@ -86,7 +88,14 @@ public class OrderDetailed extends AppCompatActivity {
         return orderId;
     }
 
-    public void updateOrder(View view) throws IOException {
+
+
+    public void navigateToMainPage(View view) {
+        Intent intent = new Intent(OrderDetailedController.this, OrdersController.class);
+        startActivity(intent);
+    }
+
+    public void updateOrder(View view) {
         int orderId = getOrderId();
 
         EditText addressField = findViewById(R.id.addressField);
@@ -101,22 +110,17 @@ public class OrderDetailed extends AppCompatActivity {
                         + order.getId() + ", \"address\": \""
                         + address + "\", \"requestedDeliveryDate\": \""
                         + order.getRequestedDeliveryDate() + "\", \"deliveryStartDate\": \""
-                        + order.getDeliveryStartDate() + "\", \"deliveryEndDate\": \""
-                        + order.getDeliveryEndDate() + "\", \"status\": \""
+                        + order.getDeliveryStartDate() + "\", \"deliveryEndDate\": "
+                        + order.getDeliveryEndDate() + ", \"status\": \""
                         + order.getStatus() + "\", \"truck\": "
                         + order.getTruck() + "}";
                 String putResponse = Rest.sendPut(UPDATE_DESTINATION, data);
-                Intent intent = new Intent(OrderDetailed.this, Orders.class);
+                Intent intent = new Intent(OrderDetailedController.this, OrdersController.class);
                 startActivity(intent);
-                Toast.makeText(OrderDetailed.this, "Order Updated Successfully: ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderDetailedController.this, "Order Updated Successfully: ", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-    }
-
-    public void navigateToMainPage(View view) {
-        Intent intent = new Intent(OrderDetailed.this, Orders.class);
-        startActivity(intent);
     }
 }

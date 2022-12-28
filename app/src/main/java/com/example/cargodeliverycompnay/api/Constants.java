@@ -1,7 +1,7 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.api;
 
 public class Constants {
-    public static final String ADDRESS = "http://172.17.128.1:8080";
+    public static final String ADDRESS = "http://172.31.16.1:8080";
     public static final String MANAGER_LOGIN_URL = ADDRESS + "/validateManager";
     public static final String COURIER_LOGIN_URL = ADDRESS + "/validateCourier";
     public static final String ALL_TRUCKS_URL = ADDRESS + "/allTrucks";

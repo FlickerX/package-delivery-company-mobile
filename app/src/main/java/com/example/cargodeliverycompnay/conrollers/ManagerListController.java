@@ -1,6 +1,6 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.conrollers;
 
-import static com.example.cargodeliverycompnay.Constants.ALL_MANGERS_URL;
+import static com.example.cargodeliverycompnay.api.Constants.ALL_MANGERS_URL;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.cargodeliverycompnay.deserializers.LocalDateDeserializer;
+import com.example.cargodeliverycompnay.R;
+import com.example.cargodeliverycompnay.rest.Rest;
 import com.example.cargodeliverycompnay.model.Manager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,7 +28,7 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class ManagerList extends AppCompatActivity {
+public class ManagerListController extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class ManagerList extends AppCompatActivity {
 
                         final List<Manager> managerListFromJson = gson.fromJson(response, managerType);
                         ListView managerListView = findViewById(R.id.managerList);
-                        ArrayAdapter<Manager> arrayAdapter = new ArrayAdapter<>(ManagerList.this, android.R.layout.simple_list_item_1, managerListFromJson);
+                        ArrayAdapter<Manager> arrayAdapter = new ArrayAdapter<>(ManagerListController.this, android.R.layout.simple_list_item_1, managerListFromJson);
                         managerListView.setAdapter(arrayAdapter);
                     }
                 });
@@ -63,7 +65,7 @@ public class ManagerList extends AppCompatActivity {
     }
 
     public void navigateToMainPage(View view) {
-        Intent intent = new Intent(ManagerList.this, NavigationPage.class);
+        Intent intent = new Intent(ManagerListController.this, NavigationPageController.class);
         startActivity(intent);
     }
 }

@@ -17,56 +17,56 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".OrderDetailed"
+            android:name=".conrollers.OrderDetailedController"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Orders"
+            android:name=".conrollers.OrdersController"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ManagerList"
+            android:name=".conrollers.ManagerListController"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CargoList"
+            android:name=".conrollers.CargoListController"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".NavigationPage"
+            android:name=".conrollers.NavigationPageController"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".DetailedTruck"
+            android:name=".conrollers.DetailedTruckController"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".TruckListPage"
+            android:name=".conrollers.TruckListController"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".conrollers.MainActivityController"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

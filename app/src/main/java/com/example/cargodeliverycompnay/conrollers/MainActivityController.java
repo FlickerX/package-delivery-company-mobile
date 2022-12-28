@@ -1,7 +1,7 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.conrollers;
 
-import static com.example.cargodeliverycompnay.Constants.COURIER_LOGIN_URL;
-import static com.example.cargodeliverycompnay.Constants.MANAGER_LOGIN_URL;
+import static com.example.cargodeliverycompnay.api.Constants.COURIER_LOGIN_URL;
+import static com.example.cargodeliverycompnay.api.Constants.MANAGER_LOGIN_URL;
 
 
 import android.content.Intent;
@@ -14,11 +14,14 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cargodeliverycompnay.R;
+import com.example.cargodeliverycompnay.rest.Rest;
+
 import java.io.IOException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityController extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 String finalResponse = response;
                 handler.post(()->{
                     if (!finalResponse.equals("")){
-                        Intent intent = new Intent(MainActivity.this, NavigationPage.class);
+                        Intent intent = new Intent(MainActivityController.this, NavigationPageController.class);
                         intent.putExtra("User", finalResponse);
                         startActivity(intent);
                     }

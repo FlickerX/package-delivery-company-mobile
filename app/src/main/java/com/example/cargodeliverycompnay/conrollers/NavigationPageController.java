@@ -1,4 +1,4 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.conrollers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class NavigationPage extends AppCompatActivity {
+import com.example.cargodeliverycompnay.R;
+
+public class NavigationPageController extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,22 +17,22 @@ public class NavigationPage extends AppCompatActivity {
     }
 
     public void openTruckList(View view) {
-        Intent intent = new Intent(NavigationPage.this, TruckListPage.class);
+        Intent intent = new Intent(NavigationPageController.this, TruckListController.class);
         startActivity(intent);
     }
 
     public void navigateToCargoList(View view) {
-        Intent intent = new Intent(NavigationPage.this, CargoList.class);
+        Intent intent = new Intent(NavigationPageController.this, CargoListController.class);
         startActivity(intent);
     }
 
     public void navigateToManagersPage(View view) {
-        Intent intent = new Intent(NavigationPage.this, ManagerList.class);
+        Intent intent = new Intent(NavigationPageController.this, ManagerListController.class);
         startActivity(intent);
     }
 
     public void navigateToOrdersPage(View view) {
-        Intent intent = new Intent(NavigationPage.this, Orders.class);
+        Intent intent = new Intent(NavigationPageController.this, OrdersController.class);
         startActivity(intent);
     }
 }

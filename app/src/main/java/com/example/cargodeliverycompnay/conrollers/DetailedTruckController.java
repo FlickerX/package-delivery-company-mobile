@@ -1,9 +1,7 @@
-package com.example.cargodeliverycompnay;
+package com.example.cargodeliverycompnay.conrollers;
 
-import static com.example.cargodeliverycompnay.Constants.DELETE_TRUCK_BY_ID;
-import static com.example.cargodeliverycompnay.Constants.DESTINATION_BY_ID;
-import static com.example.cargodeliverycompnay.Constants.TRUCK_BY_ID;
-import static com.example.cargodeliverycompnay.Constants.UPDATE_DESTINATION;
+import static com.example.cargodeliverycompnay.api.Constants.DELETE_TRUCK_BY_ID;
+import static com.example.cargodeliverycompnay.api.Constants.TRUCK_BY_ID;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,12 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.cargodeliverycompnay.model.Destination;
+import com.example.cargodeliverycompnay.R;
+import com.example.cargodeliverycompnay.rest.Rest;
 import com.example.cargodeliverycompnay.model.Truck;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,7 +23,7 @@ import java.io.IOException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class DetailedTruck extends AppCompatActivity {
+public class DetailedTruckController extends AppCompatActivity {
     Executor executor = Executors.newSingleThreadExecutor();
     Handler handler = new Handler(Looper.getMainLooper());
 
@@ -91,9 +89,9 @@ public class DetailedTruck extends AppCompatActivity {
             String response = null;
             try {
                 response = Rest.sendDelete(DELETE_TRUCK_BY_ID + truckId);;
-                Intent intent = new Intent(DetailedTruck.this, TruckListPage.class);
+                Intent intent = new Intent(DetailedTruckController.this, TruckListController.class);
                 startActivity(intent);
-                Toast.makeText(DetailedTruck.this, "Truck delete Successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailedTruckController.this, "Truck delete Successfully", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
